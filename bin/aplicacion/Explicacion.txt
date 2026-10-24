@@ -1,0 +1,46 @@
+//////////////////// PRÁCTICA 11 - NÓMINA MENSUAL EN JAVA ////////////////////
+
+**Curso:** Programación II  
+**Proyecto:** Nomina Mensual (POO y TDA)
+**Nomre del estudiante:** Jefferson Jose Argueta Ruano
+**Carnet:** 0909 22 3931
+
+>>> 1. Estructura del proyecto
+El programa está dividido en cuatro clases: Empleado, EmpleadoFijo, EmpleadoPorHora y Main. Se utilizan los paquetes `modelo` y `aplicacion` para organizar los archivos, además de `import` para utilizar Scanner, ArrayList y las clases necesarias.
+
+>>> 2. Clases, objetos y constructores
+Cada empleado se representa mediante un objeto creado con `new`. Los constructores reciben parámetros para inicializar sus atributos. Por ejemplo, `new EmpleadoFijo(dpi, nombre, sueldoMensual, bonificacion)` crea una instancia. Los valores enviados son argumentos y los nombres declarados en el constructor son parámetros. Se utiliza `this.nombre = nombre` para distinguir el atributo del parámetro.
+
+>>> 3. Encapsulamiento
+Los atributos se declaran como `private` para proteger la información. Por ejemplo, la clase Empleado tiene los atributos `dpi` y `nombre`. Para consultarlos se utilizan getters como `getDpi()` y `getNombre()`.
+
+>>> 4. Abstracción y herencia
+Empleado es una clase abstracta que contiene los datos comunes y declara el método abstracto `calcularPago()`. No puede instanciarse directamente. EmpleadoFijo y EmpleadoPorHora utilizan `extends Empleado` para heredar sus características y `super(dpi, nombre)` para inicializar los datos comunes.
+
+>>> 5. Polimorfismo y sobrescritura
+Ambas clases hijas utilizan `@Override` para implementar `calcularPago()` de forma diferente. EmpleadoFijo suma el sueldo y la bonificación, mientras que EmpleadoPorHora multiplica la tarifa por las horas trabajadas. Gracias al polimorfismo, el programa puede llamar al mismo método sin comprobar el tipo de empleado.
+
+>>> 6. Arreglo de meses
+Se utiliza `String[] meses` para guardar los doce meses del año. La expresión `meses[numeroMes - 1]` permite obtener el nombre del mes seleccionado. Se resta uno porque las posiciones de los arreglos comienzan en cero.
+
+>>> 7. ArrayList
+Se utiliza `ArrayList<Empleado>` para almacenar empleados fijos y por hora en una misma colección. El método `add()` permite registrar trabajadores y `size()` devuelve la cantidad de empleados. Para recorrer la colección se utiliza `for (Empleado empleado : empleados)`, llamando a `calcularPago()` para sumar los pagos.
+
+>>> 8. Métodos, parámetros y variables
+El método `main()` inicia el programa y llama a otros métodos para registrar empleados, validar datos y mostrar reportes. Un ejemplo de atributo es `sueldoMensual`, que pertenece al objeto; un parámetro es `mensaje` en `leerEntero()`, utilizado dentro de ese método; y una variable local es `opcion`, utilizada solamente dentro de `main()`.
+
+>>> 9. Validaciones
+El programa verifica que el mes esté entre 1 y 12, el DPI tenga exactamente 13 dígitos y el nombre no esté vacío. También valida que los valores numéricos sean finitos y mayores o iguales a cero. Si se ingresa un dato incorrecto, solicita nuevamente la información.
+
+>>> 10. Comprobación del programa
+Para comprobar los cálculos se utiliza el mes de marzo con estos empleados:
+
+- **Ana López:** sueldo Q4,000 y bonificación Q300. Pago total: Q4,300.
+- **Luis Pérez:** Q25 por hora y 120 horas trabajadas. Pago total: Q3,000.
+
+**Resultado:** 2 trabajadores y una nómina total de Q7,300.00.
+
+También se deben comprobar las opciones inválidas, el reporte sin empleados y la selección correcta de los meses.
+
+### Conclusión
+Esta práctica permite aplicar los conceptos de programación orientada a objetos, arreglos y ArrayList mediante un sistema que registra empleados y calcula sus pagos mensuales.
